@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "reserved",
+  "state": "active",
   "generation": 41,
   "execution_id": "TASK-EVENT-WAKE-E2E-001-g41",
   "task_id": "TASK-EVENT-WAKE-E2E-001",
@@ -9,5 +9,5 @@
   "request_blob_sha": "0870cb67adabc725b5b240a8abc2fae7796da62a",
   "claimed_at": "2026-09-23T16:15:39Z",
   "lease_until": "2026-09-23T17:00:39Z",
-  "activation_projection_blob_sha": null
+  "activation_projection_blob_sha": "66550aa4fb4657359c48f10b9c4ed6edb9db2e6e"
 }
