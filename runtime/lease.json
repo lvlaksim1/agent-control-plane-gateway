@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "active",
-  "generation": 37,
-  "execution_id": "EXEC-SUP-RETEST-002-DIRECT",
-  "task_id": "TASK-SUP-RETEST-002",
-  "agent_id": "project-manager-auditor",
-  "slot_id": "direct-owner-runtime",
-  "request_blob_sha": "189893ea3f9a44d4f92db9b639b3c499d46255d1",
-  "claimed_at": "2026-09-23T14:48:36Z",
-  "lease_until": "2026-09-23T15:33:36Z",
-  "activation_projection_blob_sha": "b7a6b3d9facdaba4a573d84d94c57a6b9fd61c32"
+  "state": "idle",
+  "generation": 38,
+  "execution_id": null,
+  "task_id": null,
+  "agent_id": null,
+  "slot_id": null,
+  "request_blob_sha": null,
+  "claimed_at": null,
+  "lease_until": null,
+  "activation_projection_blob_sha": null
 }
