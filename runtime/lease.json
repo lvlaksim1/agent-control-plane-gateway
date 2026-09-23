@@ -8,5 +8,6 @@
   "slot_id": null,
   "request_blob_sha": null,
   "claimed_at": null,
-  "lease_until": null
+  "lease_until": null,
+  "activation_projection_blob_sha": null
 }
