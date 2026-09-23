@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "state": "active",
-  "generation": 7,
-  "execution_id": "exec-int-pm-001-20260923T121402Z-p1",
-  "task_id": "TASK-INT-PM-001",
-  "agent_id": "context-capsule-project-manager",
-  "slot_id": "probe-1",
-  "request_blob_sha": "1756c0a3e0c247c16c98715e58c31cdf2684791e",
-  "claimed_at": "2026-09-23T12:15:02Z",
-  "lease_until": "2026-09-23T13:00:02Z"
+  "state": "idle",
+  "generation": 8,
+  "execution_id": null,
+  "task_id": null,
+  "agent_id": null,
+  "slot_id": null,
+  "request_blob_sha": null,
+  "claimed_at": null,
+  "lease_until": null
 }
