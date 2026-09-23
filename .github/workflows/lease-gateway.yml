@@ -1,0 +1,66 @@
+name: ACP Lease Gateway
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: agent-control-plane-global-lease
+  cancel-in-progress: false
+
+jobs:
+  lease:
+    if: github.event.issue.user.login == 'lvlaksim1' && github.event.issue.title == '[ACP_LEASE]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Parse request
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$ISSUE_BODY" > /tmp/request.json
+          jq -e . /tmp/request.json >/dev/null
+
+      - name: Transition lease
+        run: |
+          set -euo pipefail
+          NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          python3 tools/lease_gateway.py             --lease runtime/lease.json             --request /tmp/request.json             --now "$NOW"             --out-lease /tmp/new-lease.json             --out-response /tmp/response.json
+          cat /tmp/response.json
+
+      - name: Commit accepted transition
+        run: |
+          set -euo pipefail
+          ACCEPTED="$(jq -r '.accepted' /tmp/response.json)"
+          if [ "$ACCEPTED" != "true" ]; then
+            exit 0
+          fi
+          cp /tmp/new-lease.json runtime/lease.json
+          git config user.name "agent-control-plane-gateway"
+          git config user.email "agent-control-plane-gateway@users.noreply.github.com"
+          git add runtime/lease.json
+          git commit -m "Lease transition for issue #${{ github.event.issue.number }}"
+          git push origin HEAD:main
+
+      - name: Report result
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set -euo pipefail
+          if [ -f /tmp/response.json ]; then
+            BODY="$(cat /tmp/response.json)"
+          else
+            BODY='{"accepted":false,"reason":"gateway-error"}'
+          fi
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments" -f body="$BODY"
+          gh issue close "$ISSUE_NUMBER" --reason completed

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "idle",
+  "generation": 2,
+  "execution_id": null,
+  "task_id": null,
+  "agent_id": null,
+  "slot_id": null,
+  "request_blob_sha": null,
+  "claimed_at": null,
+  "lease_until": null
+}
