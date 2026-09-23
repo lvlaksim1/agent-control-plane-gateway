@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "reserved",
+  "state": "active",
   "generation": 43,
   "execution_id": "TASK-AUDIT-EVENT-WAKE-001-g43",
   "task_id": "TASK-AUDIT-EVENT-WAKE-001",
@@ -9,5 +9,5 @@
   "request_blob_sha": "8f873d54af443f30d407e7f485d075d596c2134a",
   "claimed_at": "2026-09-23T16:45:32Z",
   "lease_until": "2026-09-23T17:30:32Z",
-  "activation_projection_blob_sha": null
+  "activation_projection_blob_sha": "11c71bc3de5e32c5b5b4a4f9c0d865f309b8d1ae"
 }
