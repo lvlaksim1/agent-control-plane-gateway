@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "idle",
-  "generation": 32,
-  "execution_id": null,
-  "task_id": null,
-  "agent_id": null,
-  "slot_id": null,
-  "request_blob_sha": null,
-  "claimed_at": null,
-  "lease_until": null,
+  "state": "reserved",
+  "generation": 33,
+  "execution_id": "EXEC-SUP-RETEST-001-DIRECT",
+  "task_id": "TASK-SUP-RETEST-001",
+  "agent_id": "project-manager-auditor",
+  "slot_id": "direct-owner-runtime",
+  "request_blob_sha": "e8e24dc643aa78205ff25963f6f76b6a92cf0c31",
+  "claimed_at": "2026-09-23T14:30:10Z",
+  "lease_until": "2026-09-23T15:30:10Z",
   "activation_projection_blob_sha": null
 }
