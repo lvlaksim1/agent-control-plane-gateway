@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "idle",
-  "generation": 38,
-  "execution_id": null,
-  "task_id": null,
-  "agent_id": null,
-  "slot_id": null,
-  "request_blob_sha": null,
-  "claimed_at": null,
-  "lease_until": null,
+  "state": "reserved",
+  "generation": 39,
+  "execution_id": "EXEC-SUP-CLOSURE-001-DIRECT",
+  "task_id": "TASK-SUP-CLOSURE-001",
+  "agent_id": "ecosystem-supervisor",
+  "slot_id": "direct-owner-runtime",
+  "request_blob_sha": "404a07474c15967578764aa5ebd75207394bdf73",
+  "claimed_at": "2026-09-23T14:54:41Z",
+  "lease_until": "2026-09-23T15:39:41Z",
   "activation_projection_blob_sha": null
 }
