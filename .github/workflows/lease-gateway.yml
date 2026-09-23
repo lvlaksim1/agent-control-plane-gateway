@@ -11,6 +11,7 @@ permissions:
 concurrency:
   group: agent-control-plane-global-lease
   cancel-in-progress: false
+  queue: max
 
 jobs:
   lease:
