@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "active",
-  "generation": 31,
-  "execution_id": "EXEC-SUP-REMEDIATION-001-DIRECT",
-  "task_id": "TASK-SUP-REMEDIATION-001",
-  "agent_id": "ecosystem-supervisor",
-  "slot_id": "direct-owner-runtime",
-  "request_blob_sha": "622b39d7b7d95de32693df46c06c110fc05d75f3",
-  "claimed_at": "2026-09-23T14:19:05Z",
-  "lease_until": "2026-09-23T15:19:05Z",
-  "activation_projection_blob_sha": "9a21ec8d4899f59f7fe93821c11870d51faef791"
+  "state": "idle",
+  "generation": 32,
+  "execution_id": null,
+  "task_id": null,
+  "agent_id": null,
+  "slot_id": null,
+  "request_blob_sha": null,
+  "claimed_at": null,
+  "lease_until": null,
+  "activation_projection_blob_sha": null
 }
