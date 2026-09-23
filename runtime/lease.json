@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "reserved",
+  "state": "active",
   "generation": 35,
   "execution_id": "EXEC-SUP-REMEDIATION-002-DIRECT",
   "task_id": "TASK-SUP-REMEDIATION-002",
@@ -9,5 +9,5 @@
   "request_blob_sha": "a0838f8e91f2dc707d8f2900119a1e178a82304b",
   "claimed_at": "2026-09-23T14:36:55Z",
   "lease_until": "2026-09-23T15:21:55Z",
-  "activation_projection_blob_sha": null
+  "activation_projection_blob_sha": "f86f0227eed27d338e6e2d537d1d78798a5dfc4f"
 }
