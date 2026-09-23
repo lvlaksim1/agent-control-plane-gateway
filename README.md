@@ -25,3 +25,8 @@ Only issues authored by `lvlaksim1` are processed.
 The workflow is globally serialized with one GitHub Actions concurrency group. Every accepted transition commits `runtime/lease.json` before reporting success.
 
 The gateway does not decide which task is READY and cannot grant agent authority.
+
+
+## Multi-slot serialization
+
+The lease workflow uses one global concurrency group with `queue: max`. This is required for the shared five-slot dispatcher pool: concurrent lease requests are queued instead of replacing/canceling an already-pending request. The lease state machine still admits only one active owner; later queued claims observe the committed active lease and are rejected normally.
