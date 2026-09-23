@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "idle",
-  "generation": 22,
-  "execution_id": null,
-  "task_id": null,
-  "agent_id": null,
-  "slot_id": null,
-  "request_blob_sha": null,
-  "claimed_at": null,
-  "lease_until": null,
+  "state": "reserved",
+  "generation": 23,
+  "execution_id": "EXEC-CC-ACP-REMEDIATION-001-DIRECT",
+  "task_id": "TASK-CC-ACP-REMEDIATION-001",
+  "agent_id": "context-capsule-project-manager",
+  "slot_id": "direct-owner-runtime",
+  "request_blob_sha": "d063638ff33b90e7eb61ca6a5133f89654d6d603",
+  "claimed_at": "2026-09-23T13:13:29Z",
+  "lease_until": "2026-09-23T13:58:29Z",
   "activation_projection_blob_sha": null
 }
