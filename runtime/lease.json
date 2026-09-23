@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "active",
-  "generation": 25,
-  "execution_id": "EXEC-CC-ACP-RETEST-001-DIRECT",
-  "task_id": "TASK-CC-ACP-RETEST-001",
-  "agent_id": "project-manager-auditor",
-  "slot_id": "direct-owner-runtime",
-  "request_blob_sha": "c66c42764aa318f3f44f1de5ab13565320f5243c",
-  "claimed_at": "2026-09-23T13:31:09Z",
-  "lease_until": "2026-09-23T14:16:09Z",
-  "activation_projection_blob_sha": "f4722cceed7e66a975c78f430d9672743c4fffff"
+  "state": "idle",
+  "generation": 26,
+  "execution_id": null,
+  "task_id": null,
+  "agent_id": null,
+  "slot_id": null,
+  "request_blob_sha": null,
+  "claimed_at": null,
+  "lease_until": null,
+  "activation_projection_blob_sha": null
 }
