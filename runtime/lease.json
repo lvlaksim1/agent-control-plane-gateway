@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "reserved",
+  "state": "active",
   "generation": 23,
   "execution_id": "EXEC-CC-ACP-REMEDIATION-001-DIRECT",
   "task_id": "TASK-CC-ACP-REMEDIATION-001",
@@ -9,5 +9,5 @@
   "request_blob_sha": "d063638ff33b90e7eb61ca6a5133f89654d6d603",
   "claimed_at": "2026-09-23T13:13:29Z",
   "lease_until": "2026-09-23T13:58:29Z",
-  "activation_projection_blob_sha": null
+  "activation_projection_blob_sha": "59a73c1e247a4fadb445e281246acd8428da87a5"
 }
