@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Parse request
         env:
@@ -30,26 +30,59 @@ jobs:
           printf '%s' "$ISSUE_BODY" > /tmp/request.json
           jq -e . /tmp/request.json >/dev/null
 
+      - name: Read canonical lease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/contents/runtime/lease.json?ref=main" > /tmp/lease-content.json
+          jq -r '.sha' /tmp/lease-content.json > /tmp/lease-sha.txt
+          jq -r '.content' /tmp/lease-content.json | tr -d '\n' | base64 --decode > /tmp/current-lease.json
+          jq -e . /tmp/current-lease.json >/dev/null
+
       - name: Transition lease
         run: |
           set -euo pipefail
           NOW="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          python3 tools/lease_gateway.py             --lease runtime/lease.json             --request /tmp/request.json             --now "$NOW"             --out-lease /tmp/new-lease.json             --out-response /tmp/response.json
+          python3 tools/lease_gateway.py             --lease /tmp/current-lease.json             --request /tmp/request.json             --now "$NOW"             --out-lease /tmp/new-lease.json             --out-response /tmp/response.json
           cat /tmp/response.json
 
-      - name: Commit accepted transition
+      - name: CAS commit accepted transition
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           set -euo pipefail
           ACCEPTED="$(jq -r '.accepted' /tmp/response.json)"
           if [ "$ACCEPTED" != "true" ]; then
             exit 0
           fi
-          cp /tmp/new-lease.json runtime/lease.json
-          git config user.name "agent-control-plane-gateway"
-          git config user.email "agent-control-plane-gateway@users.noreply.github.com"
-          git add runtime/lease.json
-          git commit -m "Lease transition for issue #${{ github.event.issue.number }}"
-          git push origin HEAD:main
+
+          EXPECTED_SHA="$(cat /tmp/lease-sha.txt)"
+          CONTENT_B64="$(base64 -w0 /tmp/new-lease.json)"
+
+          set +e
+          gh api --method PUT             "repos/${GITHUB_REPOSITORY}/contents/runtime/lease.json"             -f message="Lease transition for issue #${ISSUE_NUMBER}"             -f content="$CONTENT_B64"             -f sha="$EXPECTED_SHA"             -f branch="main" > /tmp/write-result.json 2> /tmp/write-error.txt
+          RC=$?
+          set -e
+
+          if [ "$RC" -ne 0 ]; then
+            CURRENT_GEN="$(gh api "repos/${GITHUB_REPOSITORY}/contents/runtime/lease.json?ref=main" --jq '.content' | tr -d '\n' | base64 --decode | jq -r '.generation')"
+            jq -n -c               --arg op "$(jq -r '.operation' /tmp/request.json)"               --arg reason "cas-conflict"               --argjson generation "$CURRENT_GEN"               '{accepted:false,operation:$op,reason:$reason,generation:$generation}' > /tmp/response.json
+            exit 0
+          fi
+
+          COMMIT_SHA="$(jq -r '.commit.sha' /tmp/write-result.json)"
+          gh api "repos/${GITHUB_REPOSITORY}/contents/runtime/lease.json?ref=main"             --jq '.content' | tr -d '\n' | base64 --decode > /tmp/verified-lease.json
+
+          if ! cmp -s /tmp/new-lease.json /tmp/verified-lease.json; then
+            CURRENT_GEN="$(jq -r '.generation' /tmp/verified-lease.json)"
+            jq -n -c               --arg op "$(jq -r '.operation' /tmp/request.json)"               --arg reason "commit-not-canonical"               --argjson generation "$CURRENT_GEN"               --arg commit_sha "$COMMIT_SHA"               '{accepted:false,operation:$op,reason:$reason,generation:$generation,commit_sha:$commit_sha}' > /tmp/response.json
+            exit 0
+          fi
+
+          jq -c --arg commit_sha "$COMMIT_SHA" '. + {commit_sha:$commit_sha}' /tmp/response.json > /tmp/response-final.json
+          mv /tmp/response-final.json /tmp/response.json
 
       - name: Report result
         if: always()
