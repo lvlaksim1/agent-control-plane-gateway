@@ -22,4 +22,12 @@ class T(unittest.TestCase):
   l,_=g.transition(idle(),claim_req(),NOW)
   same,r=g.transition(l,{"operation":"recover_expired","generation":3},NOW+timedelta(minutes=1)); self.assertFalse(r["accepted"])
   n,r=g.transition(l,{"operation":"recover_expired","generation":3},NOW+timedelta(minutes=46)); self.assertTrue(r["accepted"]); self.assertEqual(n["generation"],4)
+ def test_workflow_uses_contents_api_cas_and_never_git_push(self):
+  workflow=(Path(__file__).resolve().parents[1]/".github/workflows/lease-gateway.yml").read_text()
+  self.assertIn("contents/runtime/lease.json",workflow)
+  self.assertIn("-f sha=",workflow)
+  self.assertIn("cmp -s /tmp/new-lease.json /tmp/verified-lease.json",workflow)
+  self.assertNotIn("git push origin",workflow)
+  self.assertIn("queue: max",workflow)
+
 if __name__=="__main__": unittest.main()
