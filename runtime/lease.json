@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "idle",
-  "generation": 26,
-  "execution_id": null,
-  "task_id": null,
-  "agent_id": null,
-  "slot_id": null,
-  "request_blob_sha": null,
-  "claimed_at": null,
-  "lease_until": null,
+  "state": "reserved",
+  "generation": 27,
+  "execution_id": "EXEC-CC-ACP-CLOSURE-001-DIRECT",
+  "task_id": "TASK-CC-ACP-CLOSURE-001",
+  "agent_id": "context-capsule-project-manager",
+  "slot_id": "direct-owner-runtime",
+  "request_blob_sha": "519df970bdadc006db6e47f2cdcadaa153d9414a",
+  "claimed_at": "2026-09-23T13:37:55Z",
+  "lease_until": "2026-09-23T14:22:55Z",
   "activation_projection_blob_sha": null
 }
