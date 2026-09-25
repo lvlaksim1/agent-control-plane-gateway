@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "idle",
-  "generation": 48,
-  "execution_id": null,
-  "task_id": null,
-  "agent_id": null,
-  "slot_id": null,
-  "request_blob_sha": null,
-  "claimed_at": null,
-  "lease_until": null,
+  "state": "reserved",
+  "generation": 49,
+  "execution_id": "5f8f0cf7-3c56-4bbb-a2ea-f51cbcc90562",
+  "task_id": "TASK-CC-RUNTIME-IDENTITY-ADOPTION-001",
+  "agent_id": "context-capsule-project-manager",
+  "slot_id": "execution-worker",
+  "request_blob_sha": "819eeeab9b5382207b6dbac9b9dfbd58bf1e2465",
+  "claimed_at": "2026-09-25T11:53:23Z",
+  "lease_until": "2026-09-25T12:38:23Z",
   "activation_projection_blob_sha": null
 }
