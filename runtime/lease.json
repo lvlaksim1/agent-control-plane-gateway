@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "reserved",
-  "generation": 47,
-  "execution_id": "b7e91a0c-4fc5-4b72-b389-4f157e36f5b2",
-  "task_id": "TASK-CC-RUNTIME-IDENTITY-ADOPTION-001",
-  "agent_id": "context-capsule-project-manager",
-  "slot_id": "cc-runtime-identity-closeout-1",
-  "request_blob_sha": "819eeeab9b5382207b6dbac9b9dfbd58bf1e2465",
-  "claimed_at": "2026-09-25T11:52:27Z",
-  "lease_until": "2026-09-25T12:37:27Z",
+  "state": "idle",
+  "generation": 48,
+  "execution_id": null,
+  "task_id": null,
+  "agent_id": null,
+  "slot_id": null,
+  "request_blob_sha": null,
+  "claimed_at": null,
+  "lease_until": null,
   "activation_projection_blob_sha": null
 }
