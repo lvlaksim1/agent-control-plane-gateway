@@ -8,6 +8,6 @@
   "slot_id": "execution-worker",
   "request_blob_sha": "4e23445f62d6b56428147e2204baa3543808c9d4",
   "claimed_at": "2026-09-25T15:06:54Z",
-  "lease_until": "2026-09-25T15:51:54Z",
+  "lease_until": "2026-09-25T17:30:28Z",
   "activation_projection_blob_sha": "bf579bdc58e71205cb8a77a28c0a6ceae5fc0207"
 }
