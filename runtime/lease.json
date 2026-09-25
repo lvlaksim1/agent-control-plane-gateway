@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "idle",
-  "generation": 50,
-  "execution_id": null,
-  "task_id": null,
-  "agent_id": null,
-  "slot_id": null,
-  "request_blob_sha": null,
-  "claimed_at": null,
-  "lease_until": null,
+  "state": "reserved",
+  "generation": 51,
+  "execution_id": "7f325c27-f9fe-45d9-b446-fe5459d2e4c1",
+  "task_id": "TASK-RUNTIME-IDENTITY-AUDIT-003",
+  "agent_id": "project-manager-auditor",
+  "slot_id": "execution-worker",
+  "request_blob_sha": "06ac5b68d7a86c24647d61b887bb3dd05c56d694",
+  "claimed_at": "2026-09-25T12:02:05Z",
+  "lease_until": "2026-09-25T12:47:05Z",
   "activation_projection_blob_sha": null
 }
