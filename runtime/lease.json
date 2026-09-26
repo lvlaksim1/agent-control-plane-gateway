@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "state": "active",
-  "generation": 57,
-  "execution_id": "exec-mailbox-e2e-001-20260926T0007Z",
-  "task_id": "TASK-RUNTIME-MAILBOX-ACP-E2E-001",
-  "agent_id": "execution-worker",
-  "slot_id": "execution-worker",
-  "request_blob_sha": "5883d88c3c72d3ceb04ecd7b894204b2d2de01df",
-  "claimed_at": "2026-09-26T00:06:58Z",
-  "lease_until": "2026-09-26T00:51:58Z",
-  "activation_projection_blob_sha": "4ee72870dee02eab3a13c26735ab4fb5f3996c03"
+  "state": "idle",
+  "generation": 58,
+  "execution_id": null,
+  "task_id": null,
+  "agent_id": null,
+  "slot_id": null,
+  "request_blob_sha": null,
+  "claimed_at": null,
+  "lease_until": null,
+  "activation_projection_blob_sha": null
 }
